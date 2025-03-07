@@ -38,5 +38,8 @@ data class User(
     val posts: MutableList<Post> = mutableListOf(),
 
     @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, orphanRemoval = true)
-    val comments: MutableList<Comment> = mutableListOf()
+    val comments: MutableList<Comment> = mutableListOf(),
+
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val likes: MutableList<Like> = mutableListOf()
 )

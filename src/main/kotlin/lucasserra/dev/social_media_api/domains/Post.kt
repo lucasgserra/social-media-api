@@ -11,7 +11,8 @@ data class Post(
 
     val content: String,
 
-    val like: Unit,
+    @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, orphanRemoval = true)
+    val like: MutableList<Like> = mutableListOf(),
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
